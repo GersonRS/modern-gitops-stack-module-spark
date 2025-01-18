@@ -2,11 +2,6 @@ resource "null_resource" "dependencies" {
   triggers = var.dependency_ids
 }
 
-resource "random_password" "spark_root_secretkey" {
-  length  = 16
-  special = false
-}
-
 resource "argocd_project" "this" {
   count = var.argocd_project == null ? 1 : 0
 
@@ -21,7 +16,7 @@ resource "argocd_project" "this" {
 
     destination {
       name      = var.destination_cluster
-      namespace = "spark"
+      namespace = "processing"
     }
 
     orphaned_resources {
@@ -50,8 +45,8 @@ resource "argocd_application" "this" {
   }
 
   timeouts {
-    create = "15m"
-    delete = "15m"
+    create = "5m"
+    delete = "5m"
   }
 
   wait = var.app_autosync == { "allow_empty" = tobool(null), "prune" = tobool(null), "self_heal" = tobool(null) } ? false : true
@@ -71,7 +66,7 @@ resource "argocd_application" "this" {
 
     destination {
       name      = var.destination_cluster
-      namespace = "spark"
+      namespace = "processing"
     }
 
     sync_policy {
