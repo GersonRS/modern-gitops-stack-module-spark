@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.3.0...v1.4.0) (2025-01-19)
+
+
+### 🚀 New Features
+
+* update project ([abe590e](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/abe590e01fcd53c66a9d478020601cb59f046486))
+
 ## [1.3.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.2.0...v1.3.0) (2025-01-19)
 
 
