@@ -42,6 +42,9 @@ resource "argocd_application" "this" {
       "application" = "spark"
       "cluster"     = var.destination_cluster
     }, var.argocd_labels)
+    annotations = {
+      "argocd.argoproj.io/sync-wave" = "3"
+    }
   }
 
   timeouts {
@@ -89,7 +92,12 @@ resource "argocd_application" "this" {
       }
 
       sync_options = [
-        "CreateNamespace=true"
+        "CreateNamespace=true",
+        "Validate=true",
+        "PrunePropagationPolicy=foreground",
+        "PruneLast=true",
+        "Replace=true",
+        "ServerSideApply=true"
       ]
     }
   }
