@@ -4,6 +4,11 @@ locals {
       webhook = {
         enable = true
       }
+      spark = {
+        jobNamespaces = [
+          "processing"
+        ]
+      }
     }
   }]
 }
