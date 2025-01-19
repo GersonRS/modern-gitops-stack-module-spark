@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.2.0...v1.3.0) (2025-01-19)
+
+
+### 🚀 New Features
+
+* update argos provider ([300ceda](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/300ceda63da20ddbc22cf55fee50bbc4aed9d65d))
+
 ## [1.2.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.1.0...v1.2.0) (2025-01-18)
 
 
