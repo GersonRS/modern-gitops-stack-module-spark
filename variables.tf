@@ -84,3 +84,15 @@ variable "dependency_ids" {
 #######################
 ## Module variables
 #######################
+
+variable "path_known_hosts" {
+  description = "path known_hosts"
+  type        = string
+  default     = "~/.ssh/known_hosts"
+}
+
+variable "path_ssh" {
+  description = "path ssh"
+  type        = string
+  default     = "~/.ssh/id_ed25519"
+}
