@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.4.0...v1.5.0) (2025-01-25)
+
+
+### 🚀 New Features
+
+* add new secret ([acf44d2](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/acf44d229d5b341a653fa7a62d278ee4799b0838))
+* create new secret ([ab8cc65](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/ab8cc656b001ddf8e241d689cddeb5f3d7b02fcd))
+* create new secret ([abe1a61](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/abe1a61ab01daa6083533add3ec387d87f77eae2))
+
+
+### 📚 Documentation
+
+* **terraform-docs:** generate docs and write to README.adoc ([cdc9928](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/cdc9928c6454a90c01826ab2d58b9dd62af5e91c))
+
 ## [1.4.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.3.0...v1.4.0) (2025-01-19)
 
 
