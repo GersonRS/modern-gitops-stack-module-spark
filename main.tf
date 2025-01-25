@@ -107,6 +107,38 @@ resource "argocd_application" "this" {
   ]
 }
 
+resource "kubernetes_secret" "git_creds" {
+  metadata {
+    name      = "git-creds"
+    namespace = "processing"
+  }
+
+  data = {
+    known_hosts = file("${var.path_known_hosts}")
+    ssh         = file("${var.path_ssh}")
+  }
+
+  depends_on = [
+    resource.argocd_application.this
+  ]
+}
+
+resource "kubernetes_secret" "minio_secret" {
+  metadata {
+    name      = "minio-secret"
+    namespace = "processing"
+  }
+
+  data = {
+    access-key        = "${var.storage.access_key}"
+    secret-access-key = "${var.storage.secret_access_key}"
+  }
+
+  depends_on = [
+    resource.argocd_application.this
+  ]
+}
+
 resource "null_resource" "this" {
   depends_on = [
     resource.argocd_application.this,

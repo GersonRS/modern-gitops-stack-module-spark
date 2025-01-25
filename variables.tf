@@ -84,3 +84,23 @@ variable "dependency_ids" {
 #######################
 ## Module variables
 #######################
+
+variable "path_known_hosts" {
+  description = "path known_hosts"
+  type        = string
+  default     = "~/.ssh/known_hosts"
+}
+
+variable "path_ssh" {
+  description = "path ssh"
+  type        = string
+  default     = "~/.ssh/id_ed25519"
+}
+
+variable "storage" {
+  description = "MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored."
+  type = object({
+    access_key        = string
+    secret_access_key = string
+  })
+}
