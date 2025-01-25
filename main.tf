@@ -130,8 +130,8 @@ resource "kubernetes_secret" "minio_secret" {
   }
 
   data = {
-    access-key        = file("${var.storage.access_key}")
-    secret-access-key = file("${var.storage.secret_access_key}")
+    access-key        = "${var.storage.access_key}"
+    secret-access-key = "${var.storage.secret_access_key}"
   }
 
   depends_on = [
