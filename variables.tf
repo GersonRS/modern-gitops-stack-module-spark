@@ -96,3 +96,11 @@ variable "path_ssh" {
   type        = string
   default     = "~/.ssh/id_ed25519"
 }
+
+variable "storage" {
+  description = "MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored."
+  type = object({
+    access_key        = string
+    secret_access_key = string
+  })
+}

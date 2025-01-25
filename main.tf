@@ -123,6 +123,22 @@ resource "kubernetes_secret" "git_creds" {
   ]
 }
 
+resource "kubernetes_secret" "minio_secret" {
+  metadata {
+    name      = "minio-secret"
+    namespace = "processing"
+  }
+
+  data = {
+    access-key        = file("${var.storage.access_key}")
+    secret-access-key = file("${var.storage.secret_access_key}")
+  }
+
+  depends_on = [
+    resource.argocd_application.this
+  ]
+}
+
 resource "null_resource" "this" {
   depends_on = [
     resource.argocd_application.this,
