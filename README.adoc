@@ -21,6 +21,8 @@ The following providers are used by this module:
 
 - [[provider_argocd]] <<provider_argocd,argocd>> (>= 6)
 
+- [[provider_kubernetes]] <<provider_kubernetes,kubernetes>>
+
 - [[provider_null]] <<provider_null,null>> (>= 3)
 
 === Resources
@@ -29,6 +31,8 @@ The following resources are used by this module:
 
 - https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.this] (resource)
 - https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] (resource)
+- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret[kubernetes_secret.git_creds] (resource)
+- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret[kubernetes_secret.minio_secret] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] (resource)
 - https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] (data source)
@@ -48,6 +52,19 @@ Type: `string`
 Description: Base domain of the cluster. Value used for the ingress' URL of the application.
 
 Type: `string`
+
+==== [[input_storage]] <<input_storage,storage>>
+
+Description: MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored.
+
+Type:
+[source,hcl]
+----
+object({
+    access_key        = string
+    secret_access_key = string
+  })
+----
 
 === Optional Inputs
 
@@ -149,6 +166,22 @@ Type: `map(string)`
 
 Default: `{}`
 
+==== [[input_path_known_hosts]] <<input_path_known_hosts,path_known_hosts>>
+
+Description: path known_hosts
+
+Type: `string`
+
+Default: `"~/.ssh/known_hosts"`
+
+==== [[input_path_ssh]] <<input_path_ssh,path_ssh>>
+
+Description: path ssh
+
+Type: `string`
+
+Default: `"~/.ssh/id_ed25519"`
+
 === Outputs
 
 The following outputs are exported:
@@ -179,9 +212,10 @@ Description: ID to pass other modules in order to refer to this module as a depe
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_null]] <<provider_null,null>> |>= 3
 |[[provider_argocd]] <<provider_argocd,argocd>> |>= 6
 |[[provider_utils]] <<provider_utils,utils>> |>= 1
+|[[provider_kubernetes]] <<provider_kubernetes,kubernetes>> |n/a
+|[[provider_null]] <<provider_null,null>> |>= 3
 |===
 
 = Resources
@@ -191,6 +225,8 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |Name |Type
 |https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.this] |resource
 |https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] |resource
+|https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret[kubernetes_secret.git_creds] |resource
+|https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret[kubernetes_secret.minio_secret] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] |resource
 |https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] |data source
@@ -292,6 +328,33 @@ object({
 |`map(string)`
 |`{}`
 |no
+
+|[[input_path_known_hosts]] <<input_path_known_hosts,path_known_hosts>>
+|path known_hosts
+|`string`
+|`"~/.ssh/known_hosts"`
+|no
+
+|[[input_path_ssh]] <<input_path_ssh,path_ssh>>
+|path ssh
+|`string`
+|`"~/.ssh/id_ed25519"`
+|no
+
+|[[input_storage]] <<input_storage,storage>>
+|MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored.
+|
+
+[source]
+----
+object({
+    access_key        = string
+    secret_access_key = string
+  })
+----
+
+|n/a
+|yes
 
 |===
 
