@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.5.0...v1.5.1) (2025-02-08)
+
+
+### ⌨️ Code Refactoring
+
+* adjust workflows ([66b5ea7](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/66b5ea7e54840eb3c1ac73688f977b5a182c9c46))
+* try adjust code 5 ([c92d2f9](https://github.com/GersonRS/modern-gitops-stack-module-spark/commit/c92d2f9058ae834e98fc35a813b04b2d4578f94b))
+
 ## [1.5.0](https://github.com/GersonRS/modern-gitops-stack-module-spark/compare/v1.4.0...v1.5.0) (2025-01-25)
 
 
